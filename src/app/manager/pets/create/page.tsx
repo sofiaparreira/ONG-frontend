@@ -1,7 +1,7 @@
 "use client"
 
 import ContainerInput from '@/components/Input/ContainerInput'
-import Dropdown from '@/components/Input/Dropdown/Dropdown'
+import Dropdown from '@/components/Dropdown/Dropdown'
 import { useCreatePetViewModel } from './useCreatePetViewModel';
 import Button from '@/components/Button/Button';
 
