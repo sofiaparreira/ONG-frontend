@@ -1,9 +1,9 @@
 interface PetType {
     name: string;
     age: string;
-    gender: 'male' | 'female' | '';
-    coat: 'short' | 'medium' | 'big' | ''; //pelagem    
-    size: 'small' | 'medium' | 'big' | ''; //porte
+    gender: string;
+    coat: string; //pelagem    
+    size: string; //porte
     isNeutered: boolean; //é castrado?
     isVaccinated: boolean; 
     isDewormed: boolean; //vermifugado

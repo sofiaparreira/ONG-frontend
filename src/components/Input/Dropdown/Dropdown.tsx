@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { BiChevronDown } from 'react-icons/bi'
 
-type OptionType = {
+export type OptionType = {
     label: string;
     value: string;
 }
@@ -39,7 +39,7 @@ const Dropdown:React.FC<DropdownProps> = ({selected, options, label, onSelect}) 
                     onClick={toggleDropdown}
                     type='button'
                     className='focus:ring focus:ring-indigo-600 border cursor-pointer border-gray-200 rounded-lg p-3 w-full flex items-center justify-between'>
-                <span>{selected ? selected.label : "Selecione uma opção"}</span>
+                <span className={`${!selected ? "text-gray-500" : ""}`}>{selected ? selected.label : "Selecione uma opção"}</span>
                     <BiChevronDown className={`text-xl text-gray-500 ${openDropdown ? 'rotate-180' : ''}`} />
                 </button>
 
