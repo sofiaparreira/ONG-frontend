@@ -19,6 +19,13 @@ export function useCreatePetViewModel() {
     const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
 
+          const token = localStorage.getItem('token')
+          console.log(token, "token")
+          if(!token) {
+            console.log("Faça login para ter acesso à esta página")
+            return
+          }
+
         const body = {
             name: pet.name,
             age: pet.age,
@@ -32,7 +39,13 @@ export function useCreatePetViewModel() {
         }
 
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URI}/pet/create`, body);
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URI}/pet/create`, 
+                body,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             const data = response.data
             console.log("create pet",data);
         } catch (error: any) {

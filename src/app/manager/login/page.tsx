@@ -7,7 +7,7 @@ import Button from '@/components/Button/Button'
 const page = () => {
 
     const {
-        user, setUser
+        user, setUser, handleLogin
     } = useLoginViewModel()
 
   return (
@@ -26,7 +26,7 @@ const page = () => {
                     onChange={(e) => {
                         setUser((prev) => ({
                             ...prev,
-                            user: e.target.value
+                            email: e.target.value
                         }))
                     }}
                 />
@@ -43,7 +43,7 @@ const page = () => {
                 />
             </div>
 
-            <Button label='Entrar' type='button'/>
+            <Button label='Entrar' type='button'   onClick={() => handleLogin(user.email, user.password)}/>
         </div>
       
     </main>

@@ -1,4 +1,5 @@
 "use client"
+import axios from "axios"
 import { useState } from "react"
 
 export default function useLoginViewModel() {
@@ -7,5 +8,20 @@ export default function useLoginViewModel() {
         email: "",
         password: ""
     })
-    return {user, setUser}
+
+    const handleLogin = async (email: string, password: string) => {
+        try {
+            const response = await axios.post('http://localhost:3000/auth/login', {
+                email, password
+            })
+
+            const token = response.data.token;
+            localStorage.setItem('token', token);
+            console.log('Tokne salvo com sucesso')
+        } catch (error) {
+            console.error('Erro ao fazer login', error)
+        }
+    }
+
+    return {user, setUser, handleLogin}
 }
