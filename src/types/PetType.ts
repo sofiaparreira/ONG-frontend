@@ -1,5 +1,7 @@
 interface PetType {
+    id: number;
     name: string;
+    photo: File | string;
     age: string;
     gender: string;
     coat: string; //pelagem    
