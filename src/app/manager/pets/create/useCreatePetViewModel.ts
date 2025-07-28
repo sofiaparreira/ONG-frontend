@@ -1,10 +1,12 @@
 "use client"
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useState } from "react"
 
 export function useCreatePetViewModel() {
-    const [pet, setPet] = useState<PetType>({
+  const router = useRouter()
+  const [pet, setPet] = useState<PetType>({
         name: "", 
         age: "",
         gender: "", 
@@ -55,6 +57,7 @@ const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
     );
 
     console.log("create pet", response.data);
+    router.push('/manager/pets')
   } catch (error: any) {
     console.log(error.message);
   }

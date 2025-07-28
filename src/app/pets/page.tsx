@@ -19,6 +19,7 @@ console.log(pet)
         <div className='mt-8 grid grid-cols-4 gap-8'>
           {pet.map((pet) =>  (
             <CardPet
+              id={pet.id}
               key={pet.id}
               name={pet.name}
               gender={pet.gender}
@@ -30,6 +31,7 @@ console.log(pet)
               isDewormed={pet.isDewormed}
               isVaccinated={pet.isVaccinated}
               isNeutered={pet.isNeutered}
+              isManager={false}
             />
           ))}
         </div>
