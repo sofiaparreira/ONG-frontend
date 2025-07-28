@@ -1,12 +1,13 @@
 "use client"
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react"
 
 export default function useAllViewModel() {
 
     const [pet, setPet] = useState<PetType[]>([])
-
+    const router = useRouter()
 
     const getPet = useCallback( async () => {
 
@@ -22,10 +23,14 @@ export default function useAllViewModel() {
         }
     },[])
 
+    const goToDetail = (id: number) => {
+    router.push(`/pets/${id}`);
+}
+
 
     useEffect(() => {
         getPet();
     },[getPet])
 
-    return {pet, setPet}
+    return {pet, setPet, goToDetail}
 }

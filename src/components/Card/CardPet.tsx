@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '../Button/Button';
 import Image from 'next/image';
-import { FaPencil, FaTrash } from 'react-icons/fa6';
+import { FaPencil, FaTrash, FaHourglassHalf, FaVenusMars, FaRulerVertical } from 'react-icons/fa6';
+import { FaCut } from 'react-icons/fa';
 
 interface CardPetProps {
   id:number;
@@ -16,8 +17,9 @@ interface CardPetProps {
   isVaccinated: boolean;
   isDewormed: boolean;
   isManager?: boolean;
-onDelete?: (id: number) => void;
+  onDelete?: (id: number) => void;
   onUpdate?: (id: number) => void;
+  onClick?: () => void;
 }
 
 const CardPet: React.FC<CardPetProps> = ({
@@ -34,7 +36,8 @@ const CardPet: React.FC<CardPetProps> = ({
   isManager,
   onDelete,
   onUpdate,
-  id
+  id,
+  onClick
 
 }) => {
   if (!photo) return null;
@@ -42,26 +45,23 @@ const CardPet: React.FC<CardPetProps> = ({
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
   const photoUrl = `${baseUrl}/uploads/${photo}`;
 
-  console.log(photoUrl)
-
   return (
     <div className="text-sm p-4 border border-gray-200 shadow-md rounded-lg">
       <div className='flex justify-end gap-2 mb-3'>
         {isManager && (
           <>
             <button
-  onClick={() => onDelete?.(id)} // agora sim, chama passando o ID!
+              onClick={() => onDelete?.(id)}
               className='p-2.5 bg-red-100 text-red-600 rounded-full cursor-pointer hover:bg-red-200 duration-300 transition-all'>
               <FaTrash />
             </button>
             <button 
-              onClick={() => onUpdate} 
+              onClick={() => onUpdate?.(id)} 
               className='p-2.5 bg-orange-100 text-orange-600 rounded-full cursor-pointer hover:bg-orange-200 duration-300 transition-all'>
               <FaPencil />
             </button>
           </>
         )}
-
       </div>
       <div>
         <Image
@@ -77,23 +77,27 @@ const CardPet: React.FC<CardPetProps> = ({
           {name}
         </span>
 
-        <div className="mt-4 flex flex-col w-fit gap-1">
-          <span>
-            <span className="font-medium">Idade:</span> {age}
+        <div className="mt-4 flex flex-col w-fit gap-3 text-gray-700">
+          <span className="flex items-center gap-2">
+            <FaHourglassHalf className="text-indigo-600 text-xs" />
+            <span><strong>Idade:</strong> {age}</span>
           </span>
-          <span>
-            <span className="font-medium">Sexo:</span> {gender}
+          <span className="flex items-center gap-2">
+            <FaVenusMars className="text-indigo-600" />
+            <span><strong>Sexo:</strong> {gender}</span>
           </span>
-          <span>
-            <span className="font-medium">Porte:</span> {size}
+          <span className="flex items-center gap-2">
+            <FaRulerVertical className="text-indigo-600" />
+            <span><strong>Porte:</strong> {size}</span>
           </span>
-          <span>
-            <span className="font-medium">Pelagem:</span> {coat}
+          <span className="flex items-center gap-2">
+            <FaCut className="text-indigo-600" />
+            <span><strong>Pelagem:</strong> {coat}</span>
           </span>
         </div>
       </div>
 
-      <Button label="Detalhes" type="button" />
+      <Button onClick={onClick} label="Detalhes" type="button" />
     </div>
   );
 };
