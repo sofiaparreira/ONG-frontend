@@ -18,7 +18,26 @@ const page = () => {
   const photoUrl = `${baseUrl}/uploads/${pet.photo}`;
 
   console.log(pet)
+  const genderMap = {
+    female: 'Feminino',
+    male: 'Masculino',
+  } as const
 
+  const sizeMap = {
+    small: 'Pequeno',
+    medium: 'Médio',
+    big: 'Grande',
+  } as const
+
+  const coatMap = {
+    short: 'Curta',
+    medium: 'Média',
+    long: 'Longa',
+  } as const
+
+  type GenderKey = keyof typeof genderMap
+  type SizeKey = keyof typeof sizeMap
+  type CoatKey = keyof typeof coatMap
 
   return (
     <>
@@ -53,21 +72,21 @@ const page = () => {
 
               <span className="flex items-center gap-2">
                 <FaShieldDog className="text-indigo-600" />
-                <span>    
+                <span>
                   <strong>É castrado:</strong> {pet.isNeutered ? 'Sim' : 'Não'}
                 </span>
               </span>
 
               <span className="flex items-center gap-2">
                 <FaSyringe className="text-indigo-600" />
-                <span>    
+                <span>
                   <strong>É vacinado:</strong> {pet.isVaccinated ? 'Sim' : 'Não'}
                 </span>
               </span>
 
               <span className="flex items-center gap-2">
                 <FaCapsules className="text-indigo-600" />
-                <span>    
+                <span>
                   <strong>É vermifugado:</strong> {pet.isDewormed ? 'Sim' : 'Não'}
                 </span>
               </span>

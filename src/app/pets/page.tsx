@@ -37,7 +37,7 @@ const page = () => {
     <>
       <NavBar />
       <main className='px-32 py-16'>
-        <h1 className='text-xl font-bold'>Nossos Pets</h1>
+        <h1 className='text-xl font-bold'>Cachorros para adoção</h1>
 
         <div className='mt-8 grid grid-cols-4 gap-8'>
           {pet.map((pet) => {
