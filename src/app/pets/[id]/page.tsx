@@ -43,49 +43,49 @@ const page = () => {
     <>
       <NavBar />
       <main className='px-32 py-16'>
-        <h1 className='font-bold text-2xl mb-8 text-indigo-600'>{pet.name}</h1>
+        <h1 className='font-bold text-2xl mb-8 text-primary-green'>{pet.name}</h1>
         <div className='grid grid-cols-2 gap-28  items-center'>
 
           <Image alt='Foto do Pet' height={500} width={500} src={photoUrl} className='rounded-2xl w-full' />
           <div className="flex flex-col justify-between h-full">
             <div className="mt-4 flex flex-col gap-3 text-gray-700">
               <span className="flex items-center gap-2">
-                <FaHourglassHalf className="text-indigo-600 text-xs" />
+                <FaHourglassHalf className="text-primary-green text-xs" />
                 <span><strong>Idade:</strong> {pet.age}</span>
               </span>
               <span className="flex items-center gap-2">
-                <FaVenusMars className="text-indigo-600" />
+                <FaVenusMars className="text-primary-green" />
                 <span><strong>Sexo:</strong> {pet.gender}</span>
               </span>
               <span className="flex items-center gap-2">
-                <FaRulerVertical className="text-indigo-600" />
+                <FaRulerVertical className="text-primary-green" />
                 <span><strong>Porte:</strong> {pet.size}</span>
               </span>
               <span className="flex items-center gap-2">
-                <FaCut className="text-indigo-600" />
+                <FaCut className="text-primary-green" />
                 <span><strong>Pelagem:</strong> {pet.coat}</span>
               </span>
               <span className="flex items-center gap-2">
-                <FaScissors className="text-indigo-600" />
+                <FaScissors className="text-primary-green" />
                 <span><strong>Pelagem:</strong> {pet.coat}</span>
               </span>
 
               <span className="flex items-center gap-2">
-                <FaShieldDog className="text-indigo-600" />
+                <FaShieldDog className="text-primary-green" />
                 <span>
                   <strong>É castrado:</strong> {pet.isNeutered ? 'Sim' : 'Não'}
                 </span>
               </span>
 
               <span className="flex items-center gap-2">
-                <FaSyringe className="text-indigo-600" />
+                <FaSyringe className="text-primary-green" />
                 <span>
                   <strong>É vacinado:</strong> {pet.isVaccinated ? 'Sim' : 'Não'}
                 </span>
               </span>
 
               <span className="flex items-center gap-2">
-                <FaCapsules className="text-indigo-600" />
+                <FaCapsules className="text-primary-green" />
                 <span>
                   <strong>É vermifugado:</strong> {pet.isDewormed ? 'Sim' : 'Não'}
                 </span>
@@ -106,7 +106,7 @@ const page = () => {
 
         <div>
           <h2 className='mt-16 font-medium'>Descrição</h2>
-          <div className='bg-indigo-50 rounded-lg border-l-4 border-indigo-600 p-4 mt-4 first-letter:uppercase'>
+          <div className='bg-indigo-50 rounded-lg border-l-4 border-primary-green p-4 mt-4 first-letter:uppercase'>
             {pet.description}
           </div>
 

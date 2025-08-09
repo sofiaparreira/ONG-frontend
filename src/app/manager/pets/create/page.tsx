@@ -43,6 +43,11 @@ const page = () => {
             <p className='text-gray-500 text-sm'>Preencha as informações abaixo para cadastrar um novo pet no sistema</p>
 
             <form onSubmit={createPet} className='my-12 space-y-8 w-3/4'>
+            
+            <div className='grid grid-cols-2 gap-4'>
+                <button className='bg-gray-100 rounded-lg py-3 w-full cursor-pointer'>Cachorro</button>
+                <button className='bg-gray-100 rounded-lg py-3 w-full cursor-pointer'>Gato</button>
+            </div>
                 <ContainerInput
                     label='Nome'
                     type='text'
@@ -167,7 +172,7 @@ const page = () => {
                                 description: e.target.value
                             }))
                         }}
-                        className='border text-sm border-gray-200 p-4 rounded-lg max-h-60 h-60 outline-none focus:ring focus:ring-indigo-600'>
+                        className='border text-sm border-gray-200 p-4 rounded-lg max-h-60 h-60 outline-none focus:ring focus:ring-primary-green'>
                     </textarea>
                 </div>
 

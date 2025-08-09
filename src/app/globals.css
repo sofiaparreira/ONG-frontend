@@ -1,6 +1,20 @@
 @import "tailwindcss";
 
 
+
 @theme {
-  --primary: oklch(0.72 0.11 178);
+  --color-primary-green: #3C6740;
+  --color-secondary-green: #A2CF8B;
+  --color-granite-green: #949365;
+
+  --font-sans: var(--font-montserrat), sans-serif;
+
+  /* Chelsea Market como fonte alternativa */
+  --font-chelsea: var(--font-chelsea), cursive;
+}
+
+
+/* Aplica Montserrat em todo o site */
+body {
+  font-family: var(--font-sans);
 }

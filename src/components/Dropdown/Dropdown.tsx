@@ -38,7 +38,7 @@ const Dropdown:React.FC<DropdownProps> = ({selected, options, label, onSelect}) 
                 <button 
                     onClick={toggleDropdown}
                     type='button'
-                    className='focus:ring focus:ring-indigo-600 border cursor-pointer border-gray-200 rounded-lg p-3 w-full flex items-center justify-between'>
+                    className='focus:ring focus:ring-primary-green border cursor-pointer border-gray-200 rounded-lg p-3 w-full flex items-center justify-between'>
                 <span className={`${!selected ? "text-gray-500" : ""}`}>{selected ? selected.label : "Selecione uma opção"}</span>
                     <BiChevronDown className={`text-xl text-gray-500 ${openDropdown ? 'rotate-180' : ''}`} />
                 </button>

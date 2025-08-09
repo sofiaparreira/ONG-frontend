@@ -16,7 +16,7 @@ const ContainerInput:React.FC<InputProps> = ({label, type, value, onChange}) => 
         type={type} 
         value={value}
         onChange={onChange}
-        className="border border-gray-200 rounded-lg py-2.5 px-3 w-full outline-none focus:ring focus:ring-indigo-600" />
+        className="border border-gray-200 rounded-lg py-2.5 px-3 w-full outline-none focus:ring focus:ring-primary-green" />
     </div>
   )
 }
