@@ -3,6 +3,7 @@
 import Button from "@/components/Button/Button";
 import CardRequisito from "@/components/Card/CardRequisito";
 import NavBar from "@/components/NavBar/NavBar";
+import Image from "next/image";
 import { FaRegMoneyBillAlt } from "react-icons/fa";
 import { FaHeart, FaMoneyBillWave, FaRegHeart } from "react-icons/fa6";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -16,7 +17,7 @@ export default function Home() {
     <>
       <NavBar />
       <main className="space-y-8">
-        <section className="space-y-2 grid grid-cols-2 gap-x-32 p-16 ">
+        <section className="space-y-2 grid grid-cols-2 gap-x-32 p-16 items-center ">
           <div>
             <span className="border border-gray-100 rounded-full px-4 py-2 flex items-center w-fit gap-2 text-sm ">
               <MdOutlinePets className="text-granite-green rotate-12" />
@@ -36,7 +37,7 @@ export default function Home() {
             </div>
           </div>
 
-          <img src="" alt="" />
+          <Image src={'/ban.jpg'} width={800} height={800} alt="Banner" className="rounded-lg" />
 
         </section>
 
