@@ -1,13 +1,21 @@
+interface PetPhotoType {
+  id: number;
+  url: string;
+    petId: number; 
+
+}
+
 interface PetType {
-    id: number;
-    name: string;
-    photo: File | string;
-    age: string;
-    gender: string;
-    coat: string; //pelagem    
-    size: string; //porte
-    isNeutered: boolean; //é castrado?
-    isVaccinated: boolean; 
-    isDewormed: boolean; //vermifugado
-    description: string;
+  id: number;
+  name: string;
+  type: string;
+  photo: PetPhotoType;
+  age: string;
+  gender: string;
+  coat: string;
+  size: string;
+  isNeutered: boolean;
+  isVaccinated: boolean;
+  isDewormed: boolean;
+  description: string;
 }

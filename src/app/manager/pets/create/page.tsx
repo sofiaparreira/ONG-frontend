@@ -13,20 +13,20 @@ const page = () => {
     } = useCreatePetViewModel();
 
     const genderOption = [
-        { label: 'Fêmea', value: 'female' },
-        { label: 'Macho', value: 'male' }
+        { label: 'Fêmea', value: 'Fêmea' },
+        { label: 'Macho', value: 'Macho' }
     ]
 
     const coatOption = [
-        { label: 'Curta', value: 'short' },
-        { label: 'Média', value: 'medium' },
-        { label: 'Grande', value: 'big' }
+        { label: 'Curta', value: 'Curta' },
+        { label: 'Média', value: 'Média' },
+        { label: 'Grande', value: 'Grande' }
     ]
 
     const sizeOption = [
-        { label: 'Pequeno', value: 'small' },
-        { label: 'Médio', value: 'medium' },
-        { label: 'Grande', value: 'big' },
+        { label: 'Pequeno', value: 'Pequeno' },
+        { label: 'Médio', value: 'Médio' },
+        { label: 'Grande', value: 'bGrandeig' },
     ]
 
     const defaultOption = [
@@ -35,19 +35,31 @@ const page = () => {
     ]
 
 
-
-
     return (
         <main className='px-32 py-16'>
             <h1 className='text-xl font-bold'>Cadastrar novo pet</h1>
             <p className='text-gray-500 text-sm'>Preencha as informações abaixo para cadastrar um novo pet no sistema</p>
 
             <form onSubmit={createPet} className='my-12 space-y-8 w-3/4'>
-            
-            <div className='grid grid-cols-2 gap-4'>
-                <button className='bg-gray-100 rounded-lg py-3 w-full cursor-pointer'>Cachorro</button>
-                <button className='bg-gray-100 rounded-lg py-3 w-full cursor-pointer'>Gato</button>
-            </div>
+
+               <div className='grid grid-cols-2 gap-4'>
+  <button
+    onClick={() => setPet(prev => ({ ...prev, type: 'Cachorro' }))}
+    className={`rounded-lg py-3 w-full cursor-pointer transition
+      ${pet.type === 'Cachorro' ? 'bg-blue-500 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+  >
+    Cachorro
+  </button>
+
+  <button
+    onClick={() => setPet(prev => ({ ...prev, type: 'Gato' }))}
+    className={`rounded-lg py-3 w-full cursor-pointer transition
+      ${pet.type === 'Gato' ? 'bg-blue-500 text-white shadow-lg' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+  >
+    Gato
+  </button>
+</div>
+
                 <ContainerInput
                     label='Nome'
                     type='text'
@@ -58,6 +70,7 @@ const page = () => {
                             name: e.target.value,
                         }));
                     }} />
+
                 <ContainerInput
                     label='Idade'
                     type='text'
@@ -71,12 +84,12 @@ const page = () => {
                 />
 
                 <div className='flex flex-col gap-1'>
-      <label className='text-gray-700 font-medium text-sm' htmlFor="">Foto</label>
+                    <label className='text-gray-700 font-medium text-sm' htmlFor="">Foto</label>
                     <PhotoUploadInput onFileChange={handleFileChange} />
                 </div>
 
 
-                    
+
                 <div className='grid grid-cols-3 gap-3 pt-8 border-t border-gray-200'>
                     <Dropdown
                         label="Sexo"

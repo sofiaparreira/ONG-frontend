@@ -156,9 +156,6 @@ export default function Home() {
 
             <div>qrcode</div>
 
-
-
-
           </div>
 
         </section>

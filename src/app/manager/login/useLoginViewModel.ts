@@ -11,7 +11,7 @@ export default function useLoginViewModel() {
 
     const handleLogin = async (email: string, password: string) => {
         try {
-            const response = await axios.post('http://localhost:3000/auth/login', {
+  const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URI}/auth/login`, {
                 email, password
             })
 

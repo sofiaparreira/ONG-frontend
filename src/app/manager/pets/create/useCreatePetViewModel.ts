@@ -6,26 +6,40 @@ import { useState } from "react"
 
 export function useCreatePetViewModel() {
   const router = useRouter()
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
   const [pet, setPet] = useState<PetType>({
-        name: "", 
-        age: "",
-        gender: "", 
-        coat: "",
-        size: "",
-        isNeutered: false,
-        isVaccinated: false,
-        isDewormed: false,
-        description: "",
-        photo: "",
-        id: 0
-    });
+    id: 0,
+    name: "",
+    type: "",
+    age: "",
+    gender: "",
+    coat: "",
+    size: "",
+    isNeutered: false,
+    isVaccinated: false,
+    isDewormed: false,
+    description: "",
+    photo: {
+      id: 0,
+      url: "",
+      petId: 0
+    }
+  });
+
+
 
 const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   const token = localStorage.getItem('token');
   if (!token) {
+    router.push('/manager/login')
     console.log("Faça login para ter acesso à esta página");
+    return;
+  }
+
+  if (!photoFile) {
+    alert('Envie uma foto do pet!');
     return;
   }
 
@@ -40,10 +54,9 @@ const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
     formData.append('isVaccinated', String(pet.isVaccinated));
     formData.append('isDewormed', String(pet.isDewormed));
     formData.append('description', pet.description);
+    formData.append('type', pet.type); // Não esquece o type!
 
-    if (pet.photo) {
-      formData.append('photo', pet.photo);
-    }
+    formData.append('photo', photoFile);
 
     const response = await axios.post(
       `${process.env.NEXT_PUBLIC_BASE_URI}/pet/create`,
@@ -57,7 +70,7 @@ const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
     );
 
     console.log("create pet", response.data);
-    router.push('/manager/pets')
+    router.push('/manager/pets');
   } catch (error: any) {
     console.log(error.message);
   }
@@ -65,24 +78,22 @@ const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
 
 
 
-    // --- HANDLE PHOTO ---
+  // --- HANDLE PHOTO ---
+
 
 const handleFileChange = (file: File | null) => {
   if (file) {
     console.log("Arquivo selecionado:", file.name, file.type, file.size, "bytes");
-
-    setPet((prev) => ({
-      ...prev,
-      photo: file, 
-    }));
+    setPhotoFile(file);
   } else {
     console.log("Nenhum arquivo selecionado.");
+    setPhotoFile(null);
   }
 };
 
 
-console.log(pet.photo)
+  console.log(pet.photo)
 
 
-    return { pet, setPet, createPet, handleFileChange }
+  return { pet, setPet, setPhotoFile, createPet, handleFileChange }
 }
