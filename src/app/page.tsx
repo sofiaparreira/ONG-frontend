@@ -10,8 +10,15 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { LuHeartHandshake, LuHouse } from "react-icons/lu";
 import { MdOutlinePets } from "react-icons/md";
 import { TbCopy, TbUsers } from "react-icons/tb";
+import useMainViewModel from "./useMainViewMode";
 
 export default function Home() {
+
+  const {
+    showTooltip,
+    handleCopyPix
+  } = useMainViewModel();
+
   return (
 
     <>
@@ -144,12 +151,19 @@ export default function Home() {
             <div>
               <h2 className="text-2xl font-bold text-primary-green mb-2">Ajude nossa missão</h2>
               <p>Sua doação ajuda a comprar ração, pagar vacinas e garantir o bem-estar dos nossos animais. Qualquer valor faz a diferença!</p>
-              <div className="flex items-center justify-between px-4 py-2 border border-gray-200 rounded-lg mt-8 mb-2">
+
+              
+              <div className="flex items-center justify-between px-4 py-2 border border-gray-200 rounded-lg mt-8 mb-2 relative">
+                {showTooltip && (
+                <span className="absolute -top-8 right-0 -translate-x-1/2 bg-neutral-500 text-white text-sm px-2 py-1 rounded shadow-lg">
+                  Copiado!
+                </span>
+              )}
                 <div className="flex flex-col gap-0.5">
                   <span className="text-gray-500 text-sm">Chave PIX</span>
                   <span className="font-medium">36278602000152</span>
                 </div>
-                <TbCopy className="text-lg text-gray-600" />
+                <TbCopy onClick={handleCopyPix} className="text-lg text-gray-600 cursor-pointer" />
               </div>
               <p className="text-gray-600 text-sm">Aponte a câmera do seu banco para o QR Code ao lado ou copie a chave acima.</p>
             </div>

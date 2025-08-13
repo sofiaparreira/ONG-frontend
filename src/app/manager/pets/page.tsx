@@ -11,6 +11,7 @@ const page = () => {
     const {
         pet, deletePet, goToCreate
     } = useGetPetsViewModel();
+    console.log(pet)
   return (
      <main className='xl:px-32 lg:px-24 md:px-16 md:py-16 px-5 py-8'>
         <div className='grid xl:grid-cols-6 md:grid-cols-4 sm:grid-cols-3'>
@@ -25,7 +26,7 @@ const page = () => {
               name={pet.name}
               gender={pet.gender}
               age={pet.age}
-              photo={pet.photo}
+              photo={pet.photo.url}
               coat={pet.coat}
               size={pet.size}
               description={pet.description}

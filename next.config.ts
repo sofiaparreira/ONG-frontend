@@ -2,7 +2,7 @@ import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['localhost', 'example.com'],
+    domains: ['ong-backend-oe0r.onrender.com'],
   },
 };
 

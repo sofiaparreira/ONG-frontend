@@ -27,7 +27,6 @@ export function useCreatePetViewModel() {
   });
 
 
-
 const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
@@ -54,7 +53,7 @@ const createPet = async (e: React.FormEvent<HTMLFormElement>) => {
     formData.append('isVaccinated', String(pet.isVaccinated));
     formData.append('isDewormed', String(pet.isDewormed));
     formData.append('description', pet.description);
-    formData.append('type', pet.type); // Não esquece o type!
+    formData.append('type', pet.type);
 
     formData.append('photo', photoFile);
 

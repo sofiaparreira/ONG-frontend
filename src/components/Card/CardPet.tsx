@@ -42,8 +42,12 @@ const CardPet: React.FC<CardPetProps> = ({
 }) => {
   if (!photo) return null;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
-  const photoUrl = `${baseUrl}/uploads/${photo}`;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URI;
+
+const photoPath = typeof photo === 'string' ? photo : '';
+
+const photoUrl = photoPath.startsWith('/uploads/') ? `${baseUrl}${photoPath}` : `${baseUrl}/uploads/${photoPath}`;
+
 
   return (
     <div className="text-sm p-4 border border-gray-200 shadow-md rounded-lg">
