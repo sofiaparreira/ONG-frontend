@@ -86,13 +86,14 @@ const CardPet: React.FC<CardPetProps> = ({
 
         <div className="mt-4 flex flex-col w-fit gap-2 text-gray-700">
           <span className="flex items-center gap-2">
-            <FaHourglassHalf className="text-secondary-green text-xs" />
-            <span><strong>Idade:</strong> {age}</span>
-          </span>
-          <span className="flex items-center gap-2">
             <FaVenusMars className="text-secondary-green" />
             <span><strong>Sexo:</strong> {gender}</span>
           </span>
+          <span className="flex items-center gap-2">
+            <FaHourglassHalf className="text-secondary-green text-xs" />
+            <span><strong>Idade:</strong> {age}</span>
+          </span>
+          
           <span className="flex items-center gap-2">
             <FaRulerVertical className="text-secondary-green" />
             <span><strong>Porte:</strong> {size}</span>
