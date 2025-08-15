@@ -56,7 +56,7 @@ const page = () => {
                 name={pet.name}
                 gender={genderPT}
                 age={pet.age}
-                photo={pet.photo}
+                photo={pet.photo.url}
                 coat={coatPT}
                 size={sizePT}
                 description={pet.description}

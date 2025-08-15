@@ -11,13 +11,19 @@ import { LuHeartHandshake, LuHouse } from "react-icons/lu";
 import { MdOutlinePets } from "react-icons/md";
 import { TbCopy, TbUsers } from "react-icons/tb";
 import useMainViewModel from "./useMainViewMode";
+import CardPet from "@/components/Card/CardPet";
+import { useRouter } from "next/navigation";
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
   const {
     showTooltip,
-    handleCopyPix
+    handleCopyPix,
+    pets
   } = useMainViewModel();
+
+  const router = useRouter()
 
   return (
 
@@ -27,11 +33,11 @@ export default function Home() {
         <section className="space-y-2 grid grid-cols-2 gap-x-32 p-16 items-center ">
           <div>
             <span className="border border-gray-100 rounded-full px-4 py-2 flex items-center w-fit gap-2 text-sm ">
-              <MdOutlinePets className="text-granite-green rotate-12" />
+              <MdOutlinePets className="text-brown rotate-12" />
               Adoção responsável
             </span>
             <h1 className="font-chelsea text-4xl text-primary-green mt-8">Instituto Anhangá</h1>
-            <p className="font-medium text-granite-green">Resgatando vidas, construindo esperança</p>
+            <p className="font-medium text-brown">Resgatando vidas, construindo esperança</p>
             <p>
               Somos uma organização sem fins lucrativos dedicada ao resgate, cuidado e reabilitação de cães abandonados. Cada animal merece uma segunda chance de ser feliz em um lar amoroso.
             </p>
@@ -49,7 +55,30 @@ export default function Home() {
         </section>
 
         <section className="p-16 ">
-          prontos para um lar
+          <h1 className="text-2xl font-bold text-primary-green text-center">Prontos para um lar</h1>
+          <p className="text-center mt-1">Alguns dos nossos animais aguardando por você!</p>
+
+          <div className="grid grid-cols-4 gap-8 mt-16">
+            {pets.map((pet) => (
+              <CardPet
+                id={pet.id}
+                name={pet.name}
+                type={pet.type}
+                age={pet.age}
+                coat={pet.coat}
+                description={pet.description}
+                gender={pet.gender}
+                isDewormed={pet.isDewormed}
+                isNeutered={pet.isNeutered}
+                isVaccinated={pet.isVaccinated}
+                size={pet.size}
+                photo={pet.photo.url}
+                onClick={() => {
+                  router.push(`/pets/${pet.id}`)
+                }}
+              />
+            ))}
+          </div>
         </section>
 
 
@@ -73,7 +102,7 @@ export default function Home() {
 
         <section className="py-16 px-48">
           <h2 className="text-2xl font-bold text-primary-green text-center mb-2">Requisitos para adoção</h2>
-          <p className="text-center text-granite-green mb-16">Para garantir o bem-estar dos nossos animais, temos alguns requisitos essenciais que todos os adotantes devem cumprir.</p>
+          <p className="text-center text-brown mb-16">Para garantir o bem-estar dos nossos animais, temos alguns requisitos essenciais que todos os adotantes devem cumprir.</p>
 
           <div className="grid grid-cols-4 gap-12">
             <CardRequisito>
@@ -119,7 +148,7 @@ export default function Home() {
 
         <section className="py-16 px-48">
           <h2 className="text-2xl font-bold text-primary-green text-center mb-2">Processo de adoção</h2>
-          <p className="text-center text-granite-green mb-16">Ao decidir adotar um pet, você passará por um processo de adoção que garante a segurança e o bem-estar dos animais.</p>
+          <p className="text-center text-brown mb-16">Ao decidir adotar um pet, você passará por um processo de adoção que garante a segurança e o bem-estar dos animais.</p>
 
           <div className="bg-primary-green/10 rounded-md w-full p-8 grid grid-cols-4 gap-12">
             <div className="flex flex-col items-center space-y-4 text-center">
@@ -176,7 +205,7 @@ export default function Home() {
         </section>
 
 
-
+<Footer />
       </main>
     </>
 

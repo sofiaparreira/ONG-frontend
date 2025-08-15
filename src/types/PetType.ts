@@ -1,7 +1,6 @@
 interface PetPhotoType {
   id: number;
   url: string;
-    petId: number; 
 
 }
 

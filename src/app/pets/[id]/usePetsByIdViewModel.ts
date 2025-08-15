@@ -7,22 +7,27 @@ import { useEffect, useState } from 'react'
 
 
 export default function usePetsByIdViewModel() {
-    const [pet, setPet] = useState<PetType>({
-        name: "", 
-        age: "",
-        gender: "", 
-        coat: "",
-        size: "",
-        isNeutered: false,
-        isVaccinated: false,
-        isDewormed: false,
-        description: "",
-        photo: "",
-        id: 0
-    });
+  const [pet, setPet] = useState<PetType>({
+    name: "",
+    type: "",
+    age: "",
+    gender: "",
+    coat: "",
+    size: "",
+    isNeutered: false,
+    isVaccinated: false,
+    isDewormed: false,
+    description: "",
+    photo: {
+      id: 0,
+      url: ""
+    },
+    id: 0
+  });
+
   const { id } = useParams()
   const router = useRouter()
-  
+
 
   useEffect(() => {
     if (!id) return
@@ -40,7 +45,7 @@ export default function usePetsByIdViewModel() {
     }
 
     fetchPet()
-  }, [id, router]) 
+  }, [id, router])
 
   return { pet }
 }
