@@ -29,7 +29,7 @@ const NavBar = () => {
 
 
         <li className='px-4 cursor-pointer'>Voluntariado</li>
-        <li className='px-4 cursor-pointer bg-white text-primary-green rounded-full py-1.5 hover:bg-gray-200 duration-300'>Faça uma doação</li>
+        <li className='px-4 cursor-pointer bg-white text-primary-green rounded-full py-1.5 hover:bg-gray-200 duration-300'><Link href={'/doe'}>Faça uma doação</Link></li>
       </ul>
     </nav>
   )
